@@ -61,7 +61,6 @@ bool FixDriveBlockList()
     // Disable Credential Guard
     if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, kCredentialGuardPath, 0, KEY_ALL_ACCESS, &key) == ERROR_SUCCESS) {
         isChange |= SetRegistryValueIfNotZero(key, L"Enabled", 0);  // 0 to disable Credential Guard
-        isChange |= SetRegistryValueIfNotZero(key, L"LsaCfgFlags", 0); // 0 to disable LSA configuration for Credential Guard
         RegCloseKey(key);
     }
     else {
